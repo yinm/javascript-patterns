@@ -1,17 +1,10 @@
-function extendDeep(parent, child) {
-  const
-    toStr = Object.prototype.toString,
-    astr = '[object Array]'
+function mix() {
+  let child = {}
 
-  child = child || {}
-
-  for (let i in parent) {
-    if (parent.hasOwnProperty(i)) {
-      if (typeof parent[i] === 'object') {
-        child[i] = (toStr.call(parent[i]) === astr) ? [] : {}
-        extendDeep(parent[i], child[i])
-      } else {
-        child[i] = parent[i]
+  for (let arg = 0; arg < arguments.length; arg += 1) {
+    for (let prop in arguments[arg]) {
+      if (arguments[arg].hasOwnProperty(prop)) {
+        child[prop] = arguments[arg][prop]
       }
     }
   }
@@ -19,18 +12,10 @@ function extendDeep(parent, child) {
   return child
 }
 
-const dad = {
-  counts: [1, 2, 3],
-  reads: {paper: true}
-}
-let kid = extendDeep(dad)
-
-kid.counts.push(4)
-console.log(kid.counts.toString())
-console.log(dad.counts.toString())
-
-console.log(kid.reads.paper)
-console.log(dad.reads === kid.reads)
-kid.reads.paper = false
-kid.reads.web = true
-console.log(dad.reads.paper)
+const cake = mix(
+  {eggs: 2, large: true},
+  {butter: 1, salted: true},
+  {flour: "3 cups"},
+  {sugar: "sure!"},
+)
+console.log(cake)
