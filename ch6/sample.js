@@ -12,7 +12,7 @@ Person.prototype.getName = function() {
   return this.name
 }
 
-const papa = new Person()
+const kid = object(Person.prototype)
 
-const kid = object(papa)
-console.log(kid.getName())
+console.log(typeof kid.getName)
+console.log(typeof kid.name)
