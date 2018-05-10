@@ -1,10 +1,14 @@
-const parent = {
-  name: 'Papa'
+function extend(parent, child) {
+  child = child || {}
+  for (let i in parent) {
+    if (parent.hasOwnProperty(i)) {
+      child[i] = parent[i]
+    }
+  }
+
+  return child
 }
 
-const child = Object.create(parent, {
-  age: { value: 2 }
-})
-
-console.log(child.name)
-console.log(child.hasOwnProperty('age'))
+const dad = {name: 'Adam'}
+const kid = extend(dad)
+console.log(kid.name)
