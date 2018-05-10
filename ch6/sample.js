@@ -9,6 +9,12 @@ function extend(parent, child) {
   return child
 }
 
-const dad = {name: 'Adam'}
-const kid = extend(dad)
-console.log(kid.name)
+const dad = {
+  counts: [1, 2, 3],
+  reads: {paper: true}
+}
+
+let kid = extend(dad)
+kid.counts.push(4)
+console.log(dad.counts.toString())
+console.log(dad.reads === kid.reads)
