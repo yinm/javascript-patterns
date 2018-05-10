@@ -4,9 +4,15 @@ function object(o) {
   return new F()
 }
 
-const parent = {
-  name: 'Papa',
+function Person() {
+  this.name = 'Adam'
 }
 
-const child = object(parent)
-console.log(child.name)
+Person.prototype.getName = function() {
+  return this.name
+}
+
+const papa = new Person()
+
+const kid = object(papa)
+console.log(kid.getName())
