@@ -1,18 +1,10 @@
-function object(o) {
-  function F() {}
-  F.prototype = o
-  return new F()
+const parent = {
+  name: 'Papa'
 }
 
-function Person() {
-  this.name = 'Adam'
-}
+const child = Object.create(parent, {
+  age: { value: 2 }
+})
 
-Person.prototype.getName = function() {
-  return this.name
-}
-
-const kid = object(Person.prototype)
-
-console.log(typeof kid.getName)
-console.log(typeof kid.name)
+console.log(child.name)
+console.log(child.hasOwnProperty('age'))
